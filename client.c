@@ -27,7 +27,7 @@ unsigned char *SerializeChar(unsigned char *buffer, char value)
   return buffer + 1;
 }
 
-unsigned char *SerializeStudent(unsigned char *buffer, struct Test value) 
+unsigned char *SerializeTest(unsigned char *buffer, struct Test value) 
 {
   buffer = SerializeInt(buffer, value.Id);
   buffer = SerializeChar(buffer, value.data);
@@ -66,7 +66,7 @@ int main(int argc, char const *argv[])
   mess.Id = 1;
   mess.data = 's';
   unsigned char buffer[32], *ptr;
-  ptr = SerializeStudent(buffer, mess);
+  ptr = SerializeTest(buffer, mess);
   send(sock, buffer, ptr - buffer, 0);
   return 0;
 
